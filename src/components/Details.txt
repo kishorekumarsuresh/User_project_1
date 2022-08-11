@@ -1,0 +1,58 @@
+<h1>User Details</h1>
+        {
+            details?
+            <ul>
+                {/* <center> */}
+                
+                {   
+                
+                    details.map(elem=>{
+                        let id = elem.id
+                        return(
+                          <div >
+                        <Box sx={{ flexWrap: 'wrap' }}>
+                          <Grid key={elem.id} xs={12} md={6} lg={4}> 
+                        <Card   sx={{ maxWidth: 375 ,mb:1}}>
+                        <CardContent>                        
+                            {/* <h2 >id:{elem.id}</h2> */}
+                            <p>Name:{elem.name}</p>
+                            {/* <p>email:{elem.email}</p> */}
+                            {/* <p>gender:{elem.gender}</p> */}
+                      
+                        </CardContent>
+                        </Card>
+                        </Grid>
+                        </Box>
+                        </div>
+                        )
+                        
+                    })
+               
+                } 
+                 
+                 
+                 {/* </center> */}
+            </ul>:
+            <h3>Loading...!</h3>
+
+
+
+
+
+
+
+            let editHandler = (id)=>{
+                axios.patch(`https://gorest.co.in/public/v2/users/${id}`,{
+                    name:"Super man"
+                }, {
+                    headers:{
+                        Authorization:"Bearer bf0f401f79f16bfff0c3dd99cc7d2395f41b613717f92226522562487ceff6bf"
+                    },    
+                })
+                .then(response => {
+                    console.log("edited")
+                })
+            }
+
+            
+        }
